@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Weather from "./Weather";
 import axios from "axios";
+import "./Search.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Search() {
   let [loaded, setLoad] = useState(false);
@@ -33,25 +35,26 @@ export default function Search() {
     showWeather(city);
   }
   let form = (
-    <form>
+    <form className="search-form">
       <input type="search" placeholder="Enter a city" onChange={updateCity} />
       <input type="submit" value="Search" onClick={Submit} />
     </form>
   );
   if (loaded) {
     return (
-      <div>
+      <div className="weather-app">
         {form}
         <div>
           <ul>
-              <li>Tempreture: {tempreture}°C</li>
-              <li>Description: {description}</li>
-              <li>Humidity: {humidity}%</li>
-              <li>Wind: {wind}km/h</li>
-              <li>
-                <img src={imgUrl} alt={description} />
-              </li>
-            </ul>
+            <h2 id="city">{city}</h2>
+            <li>Tempreture: {tempreture}°C</li>
+            <li>Description: {description}</li>
+            <li>Humidity: {humidity}%</li>
+            <li>Wind: {wind}km/h</li>
+            <li>
+              <img src={imgUrl} alt={description} />
+            </li>
+          </ul>
         </div>
       </div>
     );
