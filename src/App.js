@@ -1,12 +1,13 @@
 import "./App.css";
-import Weather from "./Weather";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./Search";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>Hello World</h1>
-        <Weather city="Paris" />
+        <Search />
       </header>
     </div>
   );
