@@ -1,11 +1,26 @@
- .App {
+.App {
   text-align: center;
-  margin-top: 100px;
+  background-image: linear-gradient(
+    to bottom,
+    #ffb591,
+    #fbbd9b,
+    #f7c5a6,
+    #f4ccb2,
+    #f0d3be,
+    #f3d8ca,
+    #f4ddd6,
+    #f3e3e0,
+    #f6e9eb,
+    #f7f0f4,
+    #faf7fa,
+    #fefefe
+  );
 }
-.App-header >h1 {
-  font-size: 68px;
+.App-header > h1 {
+  font-size: 60px;
   color: #282c34;
   font-family: arial, sans-serif;
+  padding-top: 50px;
 }
 
 /* .App-logo {
@@ -31,4 +46,4 @@
   to {
     transform: rotate(360deg);
   }
-} */ 
+} */

@@ -8,9 +8,10 @@ function App() {
       <header className="App-header">
         <h1>Weather App</h1>
         <br />
+        <br />
         <Search />
       </header>
-      <p className="weather-app link mt-0 pt-0" id="endNote">
+      <p className="weather-app link pt-0" id="endNote">
         <a href="https://github.com/sahesh2003/weather-react-app">
           Open-source code,
         </a>
