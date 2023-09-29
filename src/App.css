@@ -1,5 +1,20 @@
 .App {
   text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  
+}
+.App-header > h1 {
+  font-size: 60px;
+  color: #282c34;
+  font-family: arial, sans-serif;
+  padding-top: 50px;
+}
+
+.App> .container{
+  margin-top: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
   background-image: linear-gradient(
     to bottom,
     #ffb591,
@@ -16,10 +31,3 @@
     #fefefe
   );
 }
-.App-header > h1 {
-  font-size: 60px;
-  color: #282c34;
-  font-family: arial, sans-serif;
-  padding-top: 50px;
-}
-

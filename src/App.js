@@ -5,12 +5,14 @@ import Search from "./Search";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Weather App</h1>
-        <br />
-        <br />
-        <Search />
-      </header>
+      <div className="container">
+        <div className="App-header">
+          <h1>Weather App</h1>
+          <br />
+          <br />
+          <Search />
+        </div>
+      </div>
       <p className="weather-app link pt-0" id="endNote">
         <a href="https://github.com/sahesh2003/weather-react-app">
           Open-source code,

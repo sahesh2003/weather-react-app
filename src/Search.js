@@ -5,24 +5,36 @@ import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Search() {
-  let [loaded, setLoad] = useState(false);
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  //   let [loaded, setLoad] = useState(false);
   let [city, changeCity] = useState(null);
-  let [tempreture, setTempreture] = useState(null);
-  let [description, setDescription] = useState(null);
-  let [humidity, setHumidity] = useState(null);
-  let [wind, setWind] = useState(null);
-  let [icon, setIcon] = useState(null);
-  let imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  //   let [tempreture, setTempreture] = useState(null);
+  //   let [description, setDescription] = useState(null);
+  //   let [humidity, setHumidity] = useState(null);
+  //   let [wind, setWind] = useState(null);
+  //   let [icon, setIcon] = useState(null);
+  let imgUrl = `http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`;
 
   function showTempreture(response) {
-    setTempreture(Math.round(response.data.main.temp));
-    setDescription(response.data.weather[0].description);
-    setHumidity(response.data.main.humidity);
-    setWind(response.data.wind.speed);
-    setIcon(response.data.weather[0].icon);
+    setWeatherData({
+      ready: true,
+      coordinates: response.data.coord,
+      temperature: Math.round(response.data.main.temp),
+      humidity: response.data.main.humidity,
+      //   date: new Date(response.data.dt * 1000),
+      description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
+      wind: Math.round(response.data.wind.speed),
+      city: response.data.name,
+    });
+    // setTempreture(Math.round(response.data.main.temp));
+    // setDescription(response.data.weather[0].description);
+    // setHumidity(response.data.main.humidity);
+    // setWind(Math.round(response.data.wind.speed));
+    // setIcon(response.data.weather[0].icon);
   }
   function showWeather(city) {
-    setLoad(true);
+    // setLoad(true);
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8cd9be374c7c96c39a9fe73f4bf2f055&units=metric`;
     axios.get(url).then(showTempreture);
     <Weather city={city} />;
@@ -40,26 +52,38 @@ export default function Search() {
       <input type="submit" value="Search" onClick={Submit} />
     </form>
   );
-  if (loaded) {
+  if (weatherData.ready) {
+    console.log(imgUrl);
     return (
       <div className="weather-app">
         {form}
-        <div>
-          <ul>
-            <h2 id="city">{city}</h2>
-            <li>Tempreture: {tempreture}°C</li>
-            <li>Description: {description}</li>
-            <li>Humidity: {humidity}%</li>
-            <li>Wind: {wind}km/h</li>
-            <li>
-              <img src={imgUrl} alt={description} />
-            </li>
-          </ul>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 id="city">{weatherData.city}</h2>
+              <h3 className="description">{weatherData.description}</h3>
+            </div>
+            <div className="col-6">
+              <div className="row icon-temp">
+                <div className="col-3 weather-icon">
+                  <img src={imgUrl} alt={weatherData.description} />
+                </div>
+                <div className="col-3">
+                  <span className="temperature">{weatherData.temperature}</span>
+                  <span className="units">°C</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-6 humidity">
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {weatherData.wind} km/h</li>
+            </div>
+          </div>
         </div>
       </div>
     );
   } else {
     return form;
-    
   }
 }
