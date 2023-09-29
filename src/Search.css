@@ -51,6 +51,17 @@ li {
   list-style: none;
   text-align: left;
   margin-bottom: 20px;
+  text-transform: capitalize;
+}
+.date{
+    color: #7c7c7c;
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 20px;
+  list-style: none;
+  text-align: left;
+  
+  text-transform: capitalize;
 }
 .icon-temp{
     height: fit-content;

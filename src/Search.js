@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import Weather from "./Weather";
+import FormattedDate from "./FormattedDate"
 import axios from "axios";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Search() {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  //   let [loaded, setLoad] = useState(false);
   let [city, changeCity] = useState(null);
-  //   let [tempreture, setTempreture] = useState(null);
-  //   let [description, setDescription] = useState(null);
-  //   let [humidity, setHumidity] = useState(null);
-  //   let [wind, setWind] = useState(null);
-  //   let [icon, setIcon] = useState(null);
   let imgUrl = `http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`;
 
   function showTempreture(response) {
@@ -21,17 +16,13 @@ export default function Search() {
       coordinates: response.data.coord,
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
-      //   date: new Date(response.data.dt * 1000),
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
     });
-    // setTempreture(Math.round(response.data.main.temp));
-    // setDescription(response.data.weather[0].description);
-    // setHumidity(response.data.main.humidity);
-    // setWind(Math.round(response.data.wind.speed));
-    // setIcon(response.data.weather[0].icon);
+    
   }
   function showWeather(city) {
     // setLoad(true);
@@ -61,6 +52,9 @@ export default function Search() {
           <div className="row">
             <div className="col-12">
               <h2 id="city">{weatherData.city}</h2>
+              <h3 className="date">
+                <FormattedDate date={weatherData.date} />
+              </h3>
               <h3 className="description">{weatherData.description}</h3>
             </div>
             <div className="col-6">
