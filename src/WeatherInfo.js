@@ -1,0 +1,35 @@
+import React from "react";
+import FormattedDate from "./FormattedDate";
+
+export default function WeatherInfo(props){
+    let imgUrl = `http://openweathermap.org/img/wn/${props.data.icon}@2x.png`;
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h2 id="city">{props.data.city}</h2>
+            <h3 className="date">
+              <FormattedDate date={props.data.date} />
+            </h3>
+            <h3 className="description">{props.data.description}</h3>
+          </div>
+          <div className="col-6">
+            <div className="row icon-temp">
+              <div className="col-3 weather-icon">
+                <img src={imgUrl} alt={props.data.description} />
+              </div>
+              <div className="col-3">
+                <span className="temperature">{props.data.temperature}</span>
+                <span className="units">°C</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-6 humidity">
+            <li>Humidity: {props.data.humidity}%</li>
+            <li>Wind: {props.data.wind} km/h</li>
+          </div>
+        </div>
+      </div>
+    );
+}

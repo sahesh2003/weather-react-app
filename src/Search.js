@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Weather from "./Weather";
-import FormattedDate from "./FormattedDate"
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -48,33 +48,8 @@ export default function Search() {
     return (
       <div className="weather-app">
         {form}
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h2 id="city">{weatherData.city}</h2>
-              <h3 className="date">
-                <FormattedDate date={weatherData.date} />
-              </h3>
-              <h3 className="description">{weatherData.description}</h3>
-            </div>
-            <div className="col-6">
-              <div className="row icon-temp">
-                <div className="col-3 weather-icon">
-                  <img src={imgUrl} alt={weatherData.description} />
-                </div>
-                <div className="col-3">
-                  <span className="temperature">{weatherData.temperature}</span>
-                  <span className="units">°C</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-6 humidity">
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: {weatherData.wind} km/h</li>
-            </div>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
+        
       </div>
     );
   } else {
