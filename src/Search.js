@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Weather from "./Weather";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Search.css";
@@ -23,22 +22,26 @@ export default function Search(props) {
     });
     
   }
-  function showWeather(city) {
+  function showWeather() {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8cd9be374c7c96c39a9fe73f4bf2f055&units=metric`;
     axios.get(url).then(showTempreture);
-    <Weather city={city} />;
   }
   function updateCity(event) {
     changeCity(event.target.value);
   }
-  function Submit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    showWeather(city);
+    showWeather();
   }
   let form = (
-    <form className="search-form">
-      <input type="search" placeholder="Enter a city" onChange={updateCity} />
-      <input type="submit" value="Search" onClick={Submit} />
+    <form className="search-form" onSubmit={handleSubmit}>
+      <input
+        type="search"
+        placeholder="Enter a city"
+        onChange={updateCity}
+        autoFocus="on"
+      />
+      <input type="submit" value="Search" />
     </form>
   );
   if (weatherData.ready) {
@@ -50,6 +53,7 @@ export default function Search(props) {
       </div>
     );
   } else {
-    return form;
+    showWeather();
+    return "Loading...";
   }
 }
