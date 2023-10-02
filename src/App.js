@@ -10,7 +10,7 @@ function App() {
           <h1>Weather App</h1>
           <br />
           <br />
-          <Search />
+          <Search defaultCity="Tehran" />
         </div>
       </div>
       <p className="weather-app link pt-0" id="endNote">

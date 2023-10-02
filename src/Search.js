@@ -5,10 +5,9 @@ import axios from "axios";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Search() {
+export default function Search(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  let [city, changeCity] = useState(null);
-  let imgUrl = `http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`;
+  let [city, changeCity] = useState(props.defaultCity);
 
   function showTempreture(response) {
     setWeatherData({
@@ -25,7 +24,6 @@ export default function Search() {
     
   }
   function showWeather(city) {
-    // setLoad(true);
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8cd9be374c7c96c39a9fe73f4bf2f055&units=metric`;
     axios.get(url).then(showTempreture);
     <Weather city={city} />;
@@ -44,7 +42,6 @@ export default function Search() {
     </form>
   );
   if (weatherData.ready) {
-    console.log(imgUrl);
     return (
       <div className="weather-app">
         {form}

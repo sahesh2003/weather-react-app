@@ -65,6 +65,11 @@ li {
 }
 .icon-temp{
     height: fit-content;
+    
+}
+.weatherTempreture{
+    width: auto;
+    
 }
 .weather-icon {
   width: 88px;
