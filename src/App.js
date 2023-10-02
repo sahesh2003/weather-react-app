@@ -17,7 +17,8 @@ function App() {
         <a href="https://github.com/sahesh2003/weather-react-app">
           Open-source code,
         </a>
-        by Saideh Heshmati
+        by Saideh Heshmati and hosted on{" "}
+        <a href="https://euphonious-cocada-6dd8df.netlify.app/">Netlify</a>
       </p>
     </div>
   );
