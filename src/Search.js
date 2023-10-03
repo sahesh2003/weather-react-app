@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
+import WeatherForecast from "./WeatherForecast";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -49,7 +50,7 @@ export default function Search(props) {
       <div className="weather-app">
         {form}
         <WeatherInfo data={weatherData} />
-        
+        <WeatherForecast coordinates={weatherData.coordinates}/>
       </div>
     );
   } else {

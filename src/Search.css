@@ -140,12 +140,17 @@ a {
   padding-right: 0;
   width: fit-content;
 }
-#forecast {
+.forecast {
   align-items: center;
   text-align: center;
   justify-content: space-around;
-  margin-top: 20px;
   margin-bottom: 20px;
+  background-color: rgba(134, 137, 136, 0.228);
+  border-radius: 10px;
+  padding: 5px;
+}
+.forecast:hover{
+  background-color: rgba(134, 137, 136, 0.614);
 }
 #forecast > .col-2 {
   align-items: center;
@@ -173,6 +178,11 @@ a {
 }
 .min {
   opacity: 0.6;
+}
+.forecastIcon{
+  width: 80px;
+  height: 80px;
+  
 }
 /* #endNote {
   background-image: none;
